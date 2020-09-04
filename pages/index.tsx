@@ -1,5 +1,6 @@
 import Head from "next/head";
 import scores from "../data/scores";
+import cx from "classnames";
 
 const Home = () => (
   <>
@@ -9,8 +10,8 @@ const Home = () => (
     </Head>
 
     <main className="container mx-auto">
-      <div className="md:px-32 py-8 w-full">
-        <div className="shadow overflow-hidden rounded border-b border-gray-200">
+      <div className="py-8 w-full">
+        <div className="overflow-hidden">
           <table className="min-w-full bg-white">
             <thead className="bg-gray-800 text-white">
               <tr>
@@ -23,8 +24,8 @@ const Home = () => (
               </tr>
             </thead>
             <tbody className="text-gray-700">
-              {scores.map(([name, score]) => (
-                <tr>
+              {scores.map(([name, score], index) => (
+                <tr key={name} className={cx({ "bg-gray-100": index % 2 })}>
                   <td className="py-3 px-4">{name}</td>
                   <td className="py-3 px-4">{score.toLocaleString()}</td>
                 </tr>

@@ -32,10 +32,14 @@ const Home = () => (
       </div>
     </main>
 
-    <footer>
-      <a href="/" target="_blank" rel="noopener noreferrer">
-        Powered by <img src="/vercel.svg" alt="Vercel Logo" />
-      </a>
+    <footer className="container mx-auto my-8">
+      <span role="img" aria-label="heart">
+        ❤️
+      </span>{' '}
+      Thank you to the Classic Tetris community for maintaining this list{' '}
+      <span role="img" aria-label="heart">
+        ❤️
+      </span>
     </footer>
   </>
 )

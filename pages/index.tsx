@@ -1,6 +1,6 @@
-import Head from "next/head";
-import scores from "@/data/scores";
-import cx from "classnames";
+import Head from 'next/head'
+import scores from '@/data/scores'
+import cx from 'classnames'
 
 const Home = () => (
   <>
@@ -15,17 +15,13 @@ const Home = () => (
           <table className="min-w-full bg-white">
             <thead className="bg-gray-800 text-white">
               <tr>
-                <th className="text-left py-3 px-4 uppercase font-semibold text-sm">
-                  Name
-                </th>
-                <th className="text-left py-3 px-4 uppercase font-semibold text-sm">
-                  Score
-                </th>
+                <th className="text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
+                <th className="text-left py-3 px-4 uppercase font-semibold text-sm">Score</th>
               </tr>
             </thead>
             <tbody className="text-gray-700">
               {scores.map(([name, score], index) => (
-                <tr key={name} className={cx({ "bg-gray-100": index % 2 })}>
+                <tr key={name} className={cx({ 'bg-gray-100': index % 2 })}>
                   <td className="py-3 px-4">{name}</td>
                   <td className="py-3 px-4">{score.toLocaleString()}</td>
                 </tr>
@@ -37,15 +33,11 @@ const Home = () => (
     </main>
 
     <footer>
-      <a
-        href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="/" target="_blank" rel="noopener noreferrer">
         Powered by <img src="/vercel.svg" alt="Vercel Logo" />
       </a>
     </footer>
   </>
-);
+)
 
-export default Home;
+export default Home

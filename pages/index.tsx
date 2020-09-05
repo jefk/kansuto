@@ -1,5 +1,5 @@
 import Head from "next/head";
-import scores from "../data/scores";
+import scores from "@/data/scores";
 import cx from "classnames";
 
 const Home = () => (

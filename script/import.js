@@ -26,7 +26,7 @@ function readRecord() {
   let record
   while ((record = this.read())) {
     records.push({
-      player: record.Name,
+      name: record.Name,
       score: parseScore(record.Score),
       hardware: record['Emu/Cons'],
       playStyle: record['Tap/DAS'],

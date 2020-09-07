@@ -19,11 +19,16 @@ const tw = {
   button: ['px-3', 'py-2', 'border-4', 'border-gray-800', 'transition', 'duration-100'],
 }
 
+const noFilterSet = (facet) => Object.values(facet).every((value) => value === false)
+
 const Home = () => {
   const [filters, setFilters] = useState(defaultFilters)
   const filteredPlayers = useMemo(
     () =>
       players.filter((player) => {
+        if (noFilterSet(filters.hardware)) {
+          return true
+        }
         return get(filters, `hardware.${player.hardware}`)
       }),
     [filters]

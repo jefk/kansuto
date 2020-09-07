@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { players } from '@/data/scores'
 import cx from 'classnames'
-import { useState, useMemo } from 'react'
+import { useState, useMemo, Children, Dispatch, SetStateAction } from 'react'
 
 interface Filters {
   hardware: {
@@ -20,10 +20,29 @@ const defaultFilters: Filters = {
 }
 
 const tw = {
-  button: ['px-3', 'py-2', 'border-4', 'border-gray-800', 'transition', 'duration-100'],
+  button: ['px-3', 'py-2', 'border-4', 'border-gray-800', 'transition', 'duration-150'],
 }
 
 const noFilterSet = (facetSetting) => Object.values(facetSetting).every((value) => value === false)
+
+const FilterButton: React.FunctionComponent<{
+  setFilters: Dispatch<SetStateAction<Filters>>
+  filters: Filters
+  facet: string
+  value: string
+}> = ({ setFilters, filters, facet, value, children }) => (
+  <button
+    className={cx(tw.button, { 'bg-purple-400': filters[facet][value] })}
+    onClick={() =>
+      setFilters((filters) => {
+        const newFacet = { ...filters[facet], [value]: !filters[facet][value] }
+        return { ...filters, [facet]: newFacet }
+      })
+    }
+  >
+    {children}
+  </button>
+)
 
 const Home = () => {
   const [filters, setFilters] = useState<Filters>(defaultFilters)
@@ -48,52 +67,25 @@ const Home = () => {
 
       <main className="container mx-auto">
         <div className="flex gap-4 mt-8">
-          <button
-            className={cx(tw.button, { 'bg-purple-400': filters.hardware.Console })}
-            onClick={() =>
-              setFilters((filters) => {
-                const hardware = { ...filters.hardware, Console: !filters.hardware.Console }
-                return { ...filters, hardware }
-              })
-            }
-          >
+          <FilterButton filters={filters} setFilters={setFilters} facet="hardware" value="Console">
             Console
-          </button>
-          <button
-            className={cx(tw.button, { 'bg-purple-400': filters.hardware.Emulator })}
-            onClick={() =>
-              setFilters((filters) => {
-                const hardware = { ...filters.hardware, Emulator: !filters.hardware.Emulator }
-                return { ...filters, hardware }
-              })
-            }
-          >
+          </FilterButton>
+          <FilterButton filters={filters} setFilters={setFilters} facet="hardware" value="Emulator">
             Emulator
-          </button>
+          </FilterButton>
         </div>
         <div className="flex gap-4 mt-8">
-          <button
-            className={cx(tw.button, { 'bg-purple-400': filters.playStyle.DAS })}
-            onClick={() =>
-              setFilters((filters) => {
-                const playStyle = { ...filters.playStyle, DAS: !filters.playStyle.DAS }
-                return { ...filters, playStyle }
-              })
-            }
-          >
+          <FilterButton filters={filters} setFilters={setFilters} facet="playStyle" value="DAS">
             DAS
-          </button>
-          <button
-            className={cx(tw.button, { 'bg-purple-400': filters.playStyle.Hypertap })}
-            onClick={() =>
-              setFilters((filters) => {
-                const playStyle = { ...filters.playStyle, Hypertap: !filters.playStyle.Hypertap }
-                return { ...filters, playStyle }
-              })
-            }
+          </FilterButton>
+          <FilterButton
+            filters={filters}
+            setFilters={setFilters}
+            facet="playStyle"
+            value="Hypertap"
           >
             TAP
-          </button>
+          </FilterButton>
         </div>
         <table className="min-w-full bg-white mt-8">
           <thead className="bg-gray-800 text-white">

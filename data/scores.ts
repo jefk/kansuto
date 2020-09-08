@@ -4,6 +4,7 @@ export interface Player {
   hardware: string
   playStyle: string
   proof: string
+  link?: string
 }
 
 export const players: Player[] = [
@@ -13,6 +14,7 @@ export const players: Player[] = [
     hardware: 'Console',
     playStyle: 'Hypertap',
     proof: 'Video',
+    link: '/joseph-saelee',
   },
   {
     name: 'Niner80',

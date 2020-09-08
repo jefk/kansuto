@@ -1,9 +1,11 @@
+import Link from 'next/link'
 import Head from 'next/head'
 import { players } from '@/data/scores'
 import cx from 'classnames'
 import { useState, useMemo } from 'react'
 import { FilterButton } from '@/src/components/FilterButton'
 import { Filters } from '@/src/types'
+import tw from '@/src/tailwindClassNames'
 
 const defaultFilters: Filters = {
   hardware: { Console: true, Emulator: false },
@@ -61,26 +63,34 @@ const Home = () => {
               <th className="text-left py-3 px-4 uppercase">Rank</th>
               <th className="text-left py-3 px-4 uppercase">Name</th>
               <th className="text-left py-3 px-4 uppercase">Score</th>
+              <th className="text-left py-3 px-4 uppercase">History</th>
             </tr>
           </thead>
           <tbody className="text-gray-700">
-            {filteredPlayers.map(({ name, score, playStyle }, index) => {
-              const style = playStyle === 'Hypertap' ? 'TAP' : playStyle
+            {filteredPlayers.map(({ name, score, playStyle, link }, index) => {
+              const _playStyle = playStyle === 'Hypertap' ? 'TAP' : playStyle
               return (
                 <tr key={name} className={cx({ 'bg-gray-100': index % 2 })}>
                   <td className="py-3 px-4">{index + 1}</td>
-                  <td className="py-3 px-4 flex items-center">
+                  <td className="py-3 px-4 flex items-center gap-3">
                     {name}
                     <div
-                      className={cx('ml-3', 'text-xs', 'text-white', 'p-1', {
-                        'bg-red-200': style === 'TAP',
-                        'bg-blue-200': style !== 'TAP',
+                      className={cx('text-xs', 'text-white', 'p-1', {
+                        'bg-red-200': _playStyle === 'TAP',
+                        'bg-blue-200': _playStyle !== 'TAP',
                       })}
                     >
-                      {style}
+                      {_playStyle}
                     </div>
                   </td>
                   <td className="py-3 px-4">{score.toLocaleString()}</td>
+                  <td>
+                    {link && (
+                      <Link href={link}>
+                        <a className={cx(tw.link)}>view</a>
+                      </Link>
+                    )}
+                  </td>
                 </tr>
               )
             })}

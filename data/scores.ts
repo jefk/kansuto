@@ -9,10 +9,10 @@ export interface Player {
 export const players: Player[] = [
   {
     name: 'Joseph Saelee',
-    score: 1439173,
+    score: 1390780,
     hardware: 'Console',
     playStyle: 'Hypertap',
-    proof: 'Screenshot',
+    proof: 'Video',
   },
   {
     name: 'Niner80',

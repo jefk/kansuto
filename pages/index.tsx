@@ -58,9 +58,9 @@ const Home = () => {
         <table className="min-w-full bg-white mt-8">
           <thead className="bg-gray-800 text-white">
             <tr>
-              <th className="text-left py-3 px-4 uppercase font-semibold text-sm">Rank</th>
-              <th className="text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
-              <th className="text-left py-3 px-4 uppercase font-semibold text-sm">Score</th>
+              <th className="text-left py-3 px-4 uppercase">Rank</th>
+              <th className="text-left py-3 px-4 uppercase">Name</th>
+              <th className="text-left py-3 px-4 uppercase">Score</th>
             </tr>
           </thead>
           <tbody className="text-gray-700">

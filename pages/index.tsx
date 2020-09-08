@@ -64,13 +64,26 @@ const Home = () => {
             </tr>
           </thead>
           <tbody className="text-gray-700">
-            {filteredPlayers.map(({ name, score }, index) => (
-              <tr key={name} className={cx({ 'bg-gray-100': index % 2 })}>
-                <td className="py-3 px-4">{index + 1}</td>
-                <td className="py-3 px-4">{name}</td>
-                <td className="py-3 px-4">{score.toLocaleString()}</td>
-              </tr>
-            ))}
+            {filteredPlayers.map(({ name, score, playStyle }, index) => {
+              const style = playStyle === 'Hypertap' ? 'TAP' : playStyle
+              return (
+                <tr key={name} className={cx({ 'bg-gray-100': index % 2 })}>
+                  <td className="py-3 px-4">{index + 1}</td>
+                  <td className="py-3 px-4 flex items-center">
+                    {name}
+                    <div
+                      className={cx('ml-3', 'text-xs', 'text-white', 'p-1', {
+                        'bg-red-200': style === 'TAP',
+                        'bg-blue-200': style !== 'TAP',
+                      })}
+                    >
+                      {style}
+                    </div>
+                  </td>
+                  <td className="py-3 px-4">{score.toLocaleString()}</td>
+                </tr>
+              )
+            })}
           </tbody>
         </table>
       </main>

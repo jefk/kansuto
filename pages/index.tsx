@@ -1,48 +1,16 @@
 import Head from 'next/head'
 import { players } from '@/data/scores'
 import cx from 'classnames'
-import { useState, useMemo, Children, Dispatch, SetStateAction } from 'react'
-
-interface Filters {
-  hardware: {
-    Console: boolean
-    Emulator: boolean
-  }
-  playStyle: {
-    Hypertap: boolean
-    DAS: boolean
-  }
-}
+import { useState, useMemo } from 'react'
+import { FilterButton } from '@/src/components/FilterButton'
+import { Filters } from '@/src/types'
 
 const defaultFilters: Filters = {
   hardware: { Console: true, Emulator: false },
   playStyle: { Hypertap: false, DAS: false },
 }
 
-const tw = {
-  button: ['px-3', 'py-2', 'border-4', 'border-gray-800', 'transition', 'duration-150'],
-}
-
 const noFilterSet = (facetSetting) => Object.values(facetSetting).every((value) => value === false)
-
-const FilterButton: React.FunctionComponent<{
-  setFilters: Dispatch<SetStateAction<Filters>>
-  filters: Filters
-  facet: string
-  value: string
-}> = ({ setFilters, filters, facet, value, children }) => (
-  <button
-    className={cx(tw.button, { 'bg-purple-400': filters[facet][value] })}
-    onClick={() =>
-      setFilters((filters) => {
-        const newFacet = { ...filters[facet], [value]: !filters[facet][value] }
-        return { ...filters, [facet]: newFacet }
-      })
-    }
-  >
-    {children}
-  </button>
-)
 
 const Home = () => {
   const [filters, setFilters] = useState<Filters>(defaultFilters)

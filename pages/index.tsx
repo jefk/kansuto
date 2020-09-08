@@ -68,7 +68,7 @@ const Home = () => {
           </thead>
           <tbody className="text-gray-700">
             {filteredPlayers.map(({ name, score, playStyle, link }, index) => {
-              const _playStyle = playStyle === 'Hypertap' ? 'TAP' : playStyle
+              const tapOrSomething = playStyle === 'Hypertap' ? 'TAP' : playStyle
               return (
                 <tr key={name} className={cx({ 'bg-gray-100': index % 2 })}>
                   <td className="py-3 px-4">{index + 1}</td>
@@ -76,11 +76,11 @@ const Home = () => {
                     {name}
                     <div
                       className={cx('text-xs', 'text-white', 'p-1', {
-                        'bg-red-200': _playStyle === 'TAP',
-                        'bg-blue-200': _playStyle !== 'TAP',
+                        'bg-red-200': tapOrSomething === 'TAP',
+                        'bg-blue-200': tapOrSomething !== 'TAP',
                       })}
                     >
-                      {_playStyle}
+                      {tapOrSomething}
                     </div>
                   </td>
                   <td className="py-3 px-4">{score.toLocaleString()}</td>

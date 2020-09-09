@@ -37,14 +37,6 @@ const Home = () => {
 
       <main className="container mx-auto">
         <div className="flex gap-4 mt-8">
-          <FilterButton filters={filters} setFilters={setFilters} facet="hardware" value="Console">
-            Console
-          </FilterButton>
-          <FilterButton filters={filters} setFilters={setFilters} facet="hardware" value="Emulator">
-            Emulator
-          </FilterButton>
-        </div>
-        <div className="flex gap-4 mt-8">
           <FilterButton filters={filters} setFilters={setFilters} facet="playStyle" value="DAS">
             DAS
           </FilterButton>
@@ -56,7 +48,11 @@ const Home = () => {
           >
             TAP
           </FilterButton>
+          <FilterButton filters={filters} setFilters={setFilters} facet="hardware" value="Console">
+            Console only
+          </FilterButton>
         </div>
+
         <table className="min-w-full bg-white mt-8">
           <thead className="bg-gray-800 text-white">
             <tr>

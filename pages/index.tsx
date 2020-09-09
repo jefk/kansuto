@@ -56,7 +56,7 @@ const Home = () => {
         <table className="min-w-full bg-white mt-8">
           <thead className="bg-gray-800 text-white">
             <tr>
-              <th className="text-left py-3 px-4 uppercase">Rank</th>
+              <th></th>
               <th className="text-left py-3 px-4 uppercase">Name</th>
               <th className="text-left py-3 px-4 uppercase">Score</th>
             </tr>

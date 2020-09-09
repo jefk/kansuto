@@ -35,7 +35,7 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="container mx-auto text-base">
+      <main className={cx(tw.container)}>
         <div className="flex mt-8 space-x-3">
           <FilterButton filters={filters} setFilters={setFilters} facet="playStyle" value="DAS">
             DAS
@@ -95,7 +95,7 @@ const Home = () => {
         </table>
       </main>
 
-      <footer className="container mx-auto my-8">
+      <footer className={cx(tw.container, 'my-8')}>
         <span role="img" aria-label="heart">
           ❤️
         </span>{' '}

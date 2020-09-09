@@ -35,8 +35,8 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="container mx-auto">
-        <div className="flex gap-4 mt-8">
+      <main className="container mx-auto text-base">
+        <div className="flex mt-8 space-x-3">
           <FilterButton filters={filters} setFilters={setFilters} facet="playStyle" value="DAS">
             DAS
           </FilterButton>
@@ -59,7 +59,6 @@ const Home = () => {
               <th className="text-left py-3 px-4 uppercase">Rank</th>
               <th className="text-left py-3 px-4 uppercase">Name</th>
               <th className="text-left py-3 px-4 uppercase">Score</th>
-              <th className="text-left py-3 px-4 uppercase">History</th>
             </tr>
           </thead>
           <tbody className="text-gray-700">
@@ -67,26 +66,28 @@ const Home = () => {
               const tapOrSomething = playStyle === 'Hypertap' ? 'TAP' : playStyle
               return (
                 <tr key={name} className={cx({ 'bg-gray-100': index % 2 })}>
-                  <td className="py-3 px-4">{index + 1}</td>
-                  <td className="py-3 px-4 flex items-center gap-3">
-                    {name}
-                    <div
-                      className={cx('text-xs', 'text-white', 'p-1', {
-                        'bg-red-200': tapOrSomething === 'TAP',
-                        'bg-blue-200': tapOrSomething !== 'TAP',
-                      })}
-                    >
-                      {tapOrSomething}
+                  <td className="p-4">{index + 1}</td>
+                  <td className="p-4 items-center">
+                    <div className="grid gap-2 md:grid-flow-col md:grid-cols-auto-1fr">
+                      {name}
+                      <div className="flex items-baseline md:justify-between md:flex-row-reverse">
+                        <div
+                          className={cx('text-xs text-white p-1', {
+                            'bg-red-200': tapOrSomething === 'TAP',
+                            'bg-blue-200': tapOrSomething !== 'TAP',
+                          })}
+                        >
+                          {tapOrSomething}
+                        </div>
+                        {link && (
+                          <Link href={link}>
+                            <a className={cx('text-xs ml-3', tw.link)}>more{'>'}</a>
+                          </Link>
+                        )}
+                      </div>
                     </div>
                   </td>
-                  <td className="py-3 px-4">{score.toLocaleString()}</td>
-                  <td>
-                    {link && (
-                      <Link href={link}>
-                        <a className={cx(tw.link)}>view</a>
-                      </Link>
-                    )}
-                  </td>
+                  <td className="p-4">{score.toLocaleString()}</td>
                 </tr>
               )
             })}

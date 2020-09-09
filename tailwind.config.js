@@ -4,7 +4,14 @@ module.exports = {
   },
   purge: [],
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        'auto-1fr': 'auto 1fr',
+      },
+    },
+    fontSize: {
+      xs: '0.5rem',
+    },
   },
   variants: {},
   plugins: [],

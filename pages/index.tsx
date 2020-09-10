@@ -35,7 +35,7 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={cx(tw.container)}>
+      <main className={cx(tw.container, 'text-sm sm:text-base')}>
         <div className="flex mt-8 space-x-3">
           <FilterButton filters={filters} setFilters={setFilters} facet="playStyle" value="DAS">
             DAS
@@ -69,7 +69,7 @@ const Home = () => {
                   <td className="p-4">{index + 1}</td>
                   <td className="p-4 items-center">
                     <div className="grid gap-2 md:grid-flow-col md:grid-cols-auto-1fr">
-                      {name}
+                      <div className="break-all">{name}</div>
                       <div className="flex items-baseline md:justify-between md:flex-row-reverse">
                         <div
                           className={cx('text-xs text-white p-1', {

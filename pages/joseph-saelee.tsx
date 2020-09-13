@@ -20,18 +20,20 @@ const Player = () => {
   const windowSize = useWindowSize()
   const [selectedVideo, setSelectedVideo] = useState(data[0].videoId)
 
-  const videoWidth = Math.min(windowSize.width, 768)
+  const videoWidth = windowSize.width && Math.min(windowSize.width, 768)
 
   return (
     <main className={cx(tw.container, 'text-sm sm:text-base grid gap-8 my-8 max-w-screen-md')}>
       <h1 className={cx(pagePadding, 'hyphenate text-xl')}>Joseph Saelee high scores</h1>
-      <iframe
-        title="high score"
-        width={videoWidth}
-        height={videoWidth / 2}
-        src={`https://www.youtube.com/embed/${selectedVideo}?autoplay=0`}
-        frameBorder="0"
-      ></iframe>
+      {videoWidth && (
+        <iframe
+          title="high score"
+          width={videoWidth}
+          height={videoWidth / 2}
+          src={`https://www.youtube.com/embed/${selectedVideo}?autoplay=0`}
+          frameBorder="0"
+        />
+      )}
       <table className="min-w-full bg-white">
         {data.map(({ score, date, videoId }, index) => {
           const colors =

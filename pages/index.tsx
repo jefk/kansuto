@@ -83,7 +83,7 @@ const Home = () => {
                         </div>
                         {link && (
                           <Link href={link}>
-                            <a className={cx('text-xs ml-3', tw.link)}>more{'>'}</a>
+                            <a className={cx('text-xs ml-3', tw.link)}>see all{'>'}</a>
                           </Link>
                         )}
                       </div>

@@ -3,6 +3,7 @@ import joseph from '@/data/joseph'
 import tw from '@/src/tailwindClassNames'
 import { useState } from 'react'
 import useWindowSize from '@/src/hooks/useWindowSize'
+import Link from 'next/link'
 
 const pagePadding = 'px-3 sm:p-0'
 
@@ -24,7 +25,10 @@ const Player = () => {
 
   return (
     <main className={cx(tw.container, 'text-sm sm:text-base grid gap-8 my-8 max-w-screen-md')}>
-      <h1 className={cx(pagePadding, 'hyphenate text-xl')}>Joseph Saelee high scores</h1>
+      <Link href="/">
+        <a className={cx(tw.link, pagePadding)}>{'< back'}</a>
+      </Link>
+      <h1 className={cx(pagePadding, 'hyphenate text-2xl')}>Joseph Saelee high scores</h1>
       {videoWidth && (
         <iframe
           title="high score"

@@ -12,6 +12,8 @@ const defaultFilters: Filters = {
   playStyle: { Hypertap: false, DAS: false },
 }
 
+const cellPadding = 'py-3 px-2 sm:p-4'
+
 const noFilterSet = (facetSetting) => Object.values(facetSetting).every((value) => value === false)
 
 const Home = () => {
@@ -56,21 +58,21 @@ const Home = () => {
         <table className="min-w-full bg-white mt-8">
           <thead className="bg-gray-800 text-white">
             <tr>
-              <th></th>
-              <th className="text-left py-3 px-4 uppercase">Name</th>
-              <th className="text-left py-3 px-4 uppercase">Score</th>
+              <th className={cx(cellPadding)}></th>
+              <th className={cx(cellPadding, 'text-left uppercase')}>Name</th>
+              <th className={cx(cellPadding, 'text-left uppercase')}>Score</th>
             </tr>
           </thead>
           <tbody className="text-gray-700">
             {filteredPlayers.map(({ name, score, playStyle, link }, index) => {
               const tapOrSomething = playStyle === 'Hypertap' ? 'TAP' : playStyle
               return (
-                <tr key={name} className={cx({ 'bg-gray-100': index % 2 })}>
-                  <td className="p-4">{index + 1}</td>
-                  <td className="p-4 items-center">
-                    <div className="grid gap-2 md:grid-flow-col md:grid-cols-auto-1fr">
-                      <div className="break-all">{name}</div>
-                      <div className="flex items-baseline md:justify-between md:flex-row-reverse">
+                <tr key={name} className={cx('align-text-top', { 'bg-gray-100': index % 2 })}>
+                  <td className={cellPadding}>{index + 1}</td>
+                  <td className={cellPadding}>
+                    <div className="grid gap-2 sm:grid-flow-col sm:grid-cols-auto-1fr">
+                      <div className="hyphenate">{name}</div>
+                      <div className="flex items-baseline sm:justify-between sm:flex-row-reverse">
                         <div
                           className={cx('text-xs text-white p-1', {
                             'bg-red-200': tapOrSomething === 'TAP',
@@ -87,7 +89,7 @@ const Home = () => {
                       </div>
                     </div>
                   </td>
-                  <td className="p-4">{score.toLocaleString()}</td>
+                  <td className={cellPadding}>{score.toLocaleString()}</td>
                 </tr>
               )
             })}

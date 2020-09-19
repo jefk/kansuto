@@ -7,6 +7,4 @@
 
 ### stuff
 
-- google analytics
-- put it on maxout.gg
 - change title / SEO metadata

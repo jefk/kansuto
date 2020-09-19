@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Head from 'next/head'
 import cx from 'classnames'
 import { useState, useMemo } from 'react'
 import { FilterButton } from '@/src/components/FilterButton'
@@ -7,6 +6,7 @@ import { Filters } from '@/src/types'
 import tw from '@/src/tailwindClassNames'
 import { InferGetStaticPropsType } from 'next'
 import fetchPlayers from '@/src/fetchPlayers'
+import Head from '@/components/Head'
 
 const defaultFilters: Filters = {
   hardware: { Console: true, Emulator: false },
@@ -33,10 +33,7 @@ const Home = ({ players }: InferGetStaticPropsType<typeof getStaticProps>) => {
   )
   return (
     <>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Head />
 
       <main className={cx(tw.container, 'text-sm sm:text-base')}>
         <div className="flex mt-8 space-x-3">

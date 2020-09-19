@@ -11,6 +11,8 @@ const fetchPlayers = async () => {
     .then((res) => res.text())
     .then(neatCsv)
 
+  console.log(`Fetched ${records.length} from spreadsheet`)
+
   return records.map((record) => {
     return {
       name: record.Name,

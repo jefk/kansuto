@@ -8,6 +8,8 @@ const Head = () => {
       <title>Create Next App</title>
       <link rel="icon" href="/favicon.ico" />
 
+      <link rel="preload" href="/PressStart2P-vaV7.ttf" as="font" crossOrigin="anonymous" />
+
       {gaId && (
         <>
           <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />

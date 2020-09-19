@@ -8,3 +8,12 @@ export interface Filters {
     DAS: boolean
   }
 }
+
+export interface Player {
+  name: string
+  score: number
+  hardware: string
+  playStyle: string
+  proof: string
+  link?: string
+}

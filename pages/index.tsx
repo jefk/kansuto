@@ -1,11 +1,12 @@
 import Link from 'next/link'
 import Head from 'next/head'
-import { players } from '@/data/scores'
 import cx from 'classnames'
 import { useState, useMemo } from 'react'
 import { FilterButton } from '@/src/components/FilterButton'
 import { Filters } from '@/src/types'
 import tw from '@/src/tailwindClassNames'
+import { InferGetStaticPropsType } from 'next'
+import fetchPlayers from '@/src/fetchPlayers'
 
 const defaultFilters: Filters = {
   hardware: { Console: true, Emulator: false },
@@ -16,7 +17,7 @@ const cellPadding = 'py-3 px-2 sm:p-4'
 
 const noFilterSet = (facetSetting) => Object.values(facetSetting).every((value) => value === false)
 
-const Home = () => {
+const Home = ({ players }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [filters, setFilters] = useState<Filters>(defaultFilters)
   const filteredPlayers = useMemo(
     () =>
@@ -108,6 +109,11 @@ const Home = () => {
       </footer>
     </>
   )
+}
+
+export const getStaticProps = async () => {
+  const players = await fetchPlayers()
+  return { props: { players }, revalidate: 89 }
 }
 
 export default Home

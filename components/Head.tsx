@@ -1,16 +1,22 @@
 import NextHead from 'next/head'
+import { FunctionComponent } from 'react'
 
 const gaId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID
 
-const Head = () => {
+interface Props {
+  title?: string
+}
+
+const Head: FunctionComponent<Props> = ({ title }) => {
+  const titleText = title || 'NES Tetris High Scores'
   return (
     <NextHead>
-      <title>Create Next App</title>
+      <title>{titleText}</title>
       <link rel="icon" href="/favicon.ico" />
 
       <link rel="preload" href="/PressStart2P-vaV7.ttf" as="font" crossOrigin="anonymous" />
 
-      {gaId && (
+      {gaId && !navigator.doNotTrack && (
         <>
           <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />
           <script

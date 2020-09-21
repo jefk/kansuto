@@ -8,3 +8,4 @@
 ### stuff
 
 - sitemap, if there are dynamic pages
+- check google search console for sitemap

@@ -1,5 +1,5 @@
 import NextHead from 'next/head'
-import { FunctionComponent, useMemo } from 'react'
+import { FunctionComponent } from 'react'
 
 const gaId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID
 

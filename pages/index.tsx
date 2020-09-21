@@ -35,8 +35,8 @@ const Home = ({ players }: InferGetStaticPropsType<typeof getStaticProps>) => {
     <>
       <Head />
 
-      <main className={cx(tw.container, 'text-sm sm:text-base')}>
-        <div className="flex mt-8 space-x-3">
+      <main className={cx(tw.container, 'text-sm sm:text-base sm:mb-20')}>
+        <div className={cx(tw.pagePadding, 'flex mt-8 space-x-3')}>
           <FilterButton filters={filters} setFilters={setFilters} facet="playStyle" value="DAS">
             DAS
           </FilterButton>
@@ -95,13 +95,20 @@ const Home = ({ players }: InferGetStaticPropsType<typeof getStaticProps>) => {
         </table>
       </main>
 
-      <footer className={cx(tw.container, 'my-8')}>
+      <footer
+        className={cx(
+          tw.container,
+          tw.pagePadding,
+          'sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:bg-white',
+          'py-4'
+        )}
+      >
         <span role="img" aria-label="heart">
-          ❤️
+          ❤️❤️❤️
         </span>{' '}
         Thank you to the Classic Tetris community for maintaining this list{' '}
         <span role="img" aria-label="heart">
-          ❤️
+          ❤️❤️❤️
         </span>
       </footer>
     </>

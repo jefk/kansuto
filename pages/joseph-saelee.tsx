@@ -6,8 +6,6 @@ import useWindowSize from '@/src/hooks/useWindowSize'
 import Link from 'next/link'
 import Head from '@/components/Head'
 
-const pagePadding = 'px-3 sm:p-0'
-
 const getVideoId = (url: string) => url.replace(/.*v=/, '')
 
 const data = joseph
@@ -29,9 +27,9 @@ const Player = () => {
       <Head />
       <main className={cx(tw.container, 'text-sm sm:text-base grid gap-8 my-8 max-w-screen-md')}>
         <Link href="/">
-          <a className={cx(tw.link, pagePadding)}>{'< back'}</a>
+          <a className={cx(tw.link, tw.pagePadding)}>{'< back'}</a>
         </Link>
-        <h1 className={cx(pagePadding, 'hyphenate text-2xl')}>Joseph Saelee high scores</h1>
+        <h1 className={cx(tw.pagePadding, 'hyphenate text-2xl')}>Joseph Saelee high scores</h1>
         {videoWidth && (
           <iframe
             title="high score"

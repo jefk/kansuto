@@ -36,6 +36,9 @@ const Home = ({ players }: InferGetStaticPropsType<typeof getStaticProps>) => {
       <Head />
 
       <main className={cx(tw.container, 'text-sm sm:text-base sm:mb-20')}>
+        <h1 className={cx(tw.pagePadding, 'mt-8 text-xs sm:text-base')}>
+          Classic Tetris Leaderboard
+        </h1>
         <div className={cx(tw.pagePadding, 'flex mt-8 space-x-3')}>
           <FilterButton filters={filters} setFilters={setFilters} facet="playStyle" value="DAS">
             DAS

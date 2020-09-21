@@ -7,4 +7,4 @@
 
 ### stuff
 
-- change title / SEO metadata
+- sitemap, if there are dynamic pages

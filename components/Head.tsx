@@ -1,5 +1,5 @@
 import NextHead from 'next/head'
-import { FunctionComponent } from 'react'
+import { FunctionComponent, useMemo } from 'react'
 
 const gaId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID
 
@@ -8,7 +8,9 @@ interface Props {
 }
 
 const Head: FunctionComponent<Props> = ({ title }) => {
+  const enableAnalytics = gaId && typeof navigator !== 'undefined' && !navigator.doNotTrack
   const titleText = title || 'NES Tetris High Scores'
+
   return (
     <NextHead>
       <title>{titleText}</title>
@@ -17,7 +19,7 @@ const Head: FunctionComponent<Props> = ({ title }) => {
 
       <link rel="preload" href="/PressStart2P-vaV7.ttf" as="font" crossOrigin="anonymous" />
 
-      {gaId && !navigator.doNotTrack && (
+      {enableAnalytics && (
         <>
           <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />
           <script

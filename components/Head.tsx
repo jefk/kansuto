@@ -14,7 +14,7 @@ const Head: FunctionComponent<Props> = ({ title }) => {
   return (
     <NextHead>
       <title>{titleText}</title>
-      <meta name="description" content="Top scores from the NES version of Classic Tetris"></meta>
+      <meta name="description" content="Top scores from NES Classic Tetris"></meta>
       <link rel="icon" href="/favicon.ico" />
 
       <link rel="preload" href="/PressStart2P-vaV7.ttf" as="font" crossOrigin="anonymous" />

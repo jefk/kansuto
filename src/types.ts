@@ -4,7 +4,7 @@ export interface Filters {
     Emulator: boolean
   }
   playStyle: {
-    Hypertap: boolean
+    Tap: boolean
     DAS: boolean
   }
 }

@@ -10,7 +10,7 @@ import Head from '@/components/Head'
 
 const defaultFilters: Filters = {
   hardware: { Console: true, Emulator: false },
-  playStyle: { Hypertap: false, DAS: false },
+  playStyle: { Tap: false, DAS: false },
 }
 
 const cellPadding = 'py-3 px-2 sm:p-4'
@@ -43,12 +43,7 @@ const Home = ({ players }: InferGetStaticPropsType<typeof getStaticProps>) => {
           <FilterButton filters={filters} setFilters={setFilters} facet="playStyle" value="DAS">
             DAS
           </FilterButton>
-          <FilterButton
-            filters={filters}
-            setFilters={setFilters}
-            facet="playStyle"
-            value="Hypertap"
-          >
+          <FilterButton filters={filters} setFilters={setFilters} facet="playStyle" value="Tap">
             TAP
           </FilterButton>
           <FilterButton filters={filters} setFilters={setFilters} facet="hardware" value="Console">
@@ -66,7 +61,7 @@ const Home = ({ players }: InferGetStaticPropsType<typeof getStaticProps>) => {
           </thead>
           <tbody className="text-gray-700">
             {filteredPlayers.map(({ name, score, playStyle, link }, index) => {
-              const tapOrSomething = playStyle === 'Hypertap' ? 'TAP' : playStyle
+              const tapOrSomething = playStyle === 'Tap' ? 'TAP' : playStyle
               return (
                 <tr key={name} className={cx('align-text-top', { 'bg-gray-100': index % 2 })}>
                   <td className={cellPadding}>{index + 1}</td>

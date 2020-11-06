@@ -72,7 +72,8 @@ const Home = ({ players }: InferGetStaticPropsType<typeof getStaticProps>) => {
                         <div
                           className={cx('text-xs text-white p-1', {
                             'bg-red-200': tapOrSomething === 'TAP',
-                            'bg-blue-200': tapOrSomething !== 'TAP',
+                            'bg-blue-200': playStyle === 'DAS',
+                            'bg-purple-200': !(tapOrSomething === 'TAP' || playStyle === 'DAS'),
                           })}
                         >
                           {tapOrSomething}

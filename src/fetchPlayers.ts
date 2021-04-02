@@ -13,15 +13,17 @@ const fetchPlayers = async () => {
 
   console.log(`Fetched ${records.length} players from spreadsheet`)
 
-  return records.map((record) => {
-    return {
-      name: record.Name,
-      score: parseScore(record.Score),
-      hardware: record['Emu/Cons'],
-      playStyle: record['Tap/DAS'],
-      proof: record.Proof,
-    } as Player
-  })
+  return records
+    .filter((record) => record.Name)
+    .map((record) => {
+      return {
+        name: record.Name,
+        score: parseScore(record.Score),
+        hardware: record['Emu/Cons'],
+        playStyle: record['Tap/DAS'],
+        proof: record.Proof,
+      } as Player
+    })
 }
 
 const parseScore = (textScore) => {

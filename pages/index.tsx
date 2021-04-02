@@ -55,7 +55,7 @@ const Home = ({ players }: InferGetStaticPropsType<typeof getStaticProps>) => {
           <thead className="bg-gray-800 text-white">
             <tr>
               <th className={cx(cellPadding)}></th>
-              <th className={cx(cellPadding, 'text-left uppercase')}>Name</th>
+              <th className={cx(cellPadding)}></th>
               <th className={cx(cellPadding, 'text-left uppercase')}>Score</th>
             </tr>
           </thead>

@@ -6,6 +6,7 @@ export interface Filters {
   playStyle: {
     Tap: boolean
     DAS: boolean
+    Roll: boolean
   }
 }
 

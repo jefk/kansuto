@@ -10,7 +10,7 @@ import Head from '@/components/Head'
 
 const defaultFilters: Filters = {
   hardware: { Console: true, Emulator: false },
-  playStyle: { Tap: false, DAS: false },
+  playStyle: { Tap: false, DAS: false, Roll: false },
 }
 
 const cellPadding = 'py-3 px-2 sm:p-4'
@@ -45,6 +45,9 @@ const Home = ({ players }: InferGetStaticPropsType<typeof getStaticProps>) => {
           </FilterButton>
           <FilterButton filters={filters} setFilters={setFilters} facet="playStyle" value="Tap">
             TAP
+          </FilterButton>
+          <FilterButton filters={filters} setFilters={setFilters} facet="playStyle" value="Roll">
+            ROLL
           </FilterButton>
           <FilterButton filters={filters} setFilters={setFilters} facet="hardware" value="Console">
             Console only

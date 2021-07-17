@@ -39,19 +39,32 @@ const Home = ({ players }: InferGetStaticPropsType<typeof getStaticProps>) => {
         <h1 className={cx(tw.pagePadding, 'mt-8 text-xs sm:text-base')}>
           Classic Tetris Leaderboard
         </h1>
-        <div className={cx(tw.pagePadding, 'flex mt-8 space-x-3')}>
-          <FilterButton filters={filters} setFilters={setFilters} facet="playStyle" value="DAS">
-            DAS
-          </FilterButton>
-          <FilterButton filters={filters} setFilters={setFilters} facet="playStyle" value="Tap">
-            TAP
-          </FilterButton>
-          <FilterButton filters={filters} setFilters={setFilters} facet="playStyle" value="Roll">
-            ROLL
-          </FilterButton>
-          <FilterButton filters={filters} setFilters={setFilters} facet="hardware" value="Console">
-            Console only
-          </FilterButton>
+        <div className={cx(tw.pagePadding, 'flex mt-3 space-x-3 flex-wrap')}>
+          <div className="mt-2">
+            <FilterButton filters={filters} setFilters={setFilters} facet="playStyle" value="DAS">
+              DAS
+            </FilterButton>
+          </div>
+          <div className="mt-2">
+            <FilterButton filters={filters} setFilters={setFilters} facet="playStyle" value="Tap">
+              TAP
+            </FilterButton>
+          </div>
+          <div className="mt-2">
+            <FilterButton filters={filters} setFilters={setFilters} facet="playStyle" value="Roll">
+              ROLL
+            </FilterButton>
+          </div>
+          <div className="mt-2">
+            <FilterButton
+              filters={filters}
+              setFilters={setFilters}
+              facet="hardware"
+              value="Console"
+            >
+              Console only
+            </FilterButton>
+          </div>
         </div>
 
         <table className="min-w-full bg-white mt-8">

@@ -19,7 +19,7 @@ const fetchPlayers = async () => {
       return {
         name: record.Name,
         score: parseScore(record.Score),
-        hardware: record['Emu/Cons'],
+        hardware: record['Platform'],
         playStyle: record['Style'],
         proof: record.Proof,
       } as Player

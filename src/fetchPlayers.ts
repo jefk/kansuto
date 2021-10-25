@@ -4,8 +4,6 @@ import { Player } from './types'
 const url =
   'https://docs.google.com/spreadsheets/d/1ZBxkZEsfwDsUpyire4Xb16er36Covk7nhR8BN_LPodI/export?format=csv&id=1ZBxkZEsfwDsUpyire4Xb16er36Covk7nhR8BN_LPodI&gid=1078039113'
 
-const encodings = { A: '10', B: '11', C: '12', D: '13', E: '14', F: '15', G: '16' }
-
 const fetchPlayers = async () => {
   const records = await fetch(url)
     .then((res) => res.text())
@@ -26,11 +24,20 @@ const fetchPlayers = async () => {
     })
 }
 
-const parseScore = (textScore) => {
-  let decoded = textScore
-  Object.entries(encodings).find(([letter, replacement]) => {
-    decoded = decoded.replace(letter, replacement)
-  })
+const decodeSortaHex = (str: string, index: number) => {
+  if (!str.charAt(index).match(/[A-Z]/)) {
+    return str.charAt(index)
+  }
+  return str.charCodeAt(index) - 55
+}
+
+const parseScore = (textScore: string) => {
+  const upper = textScore.toUpperCase()
+  const decoded = Array(upper.length)
+    .fill(0)
+    .map((_, i) => decodeSortaHex(upper, i))
+    .join('')
+
   return Number(decoded)
 }
 

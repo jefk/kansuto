@@ -131,8 +131,7 @@ const Home = ({ players }: InferGetStaticPropsType<typeof getStaticProps>) => {
 }
 
 export const getStaticProps = async () => {
-  const players = await fetchPlayers()
-  return { props: { players }, revalidate: 89 }
+  return { props: { players: await fetchPlayers() }, revalidate: 89 }
 }
 
 export default Home
